@@ -2,19 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import random
+from enum import Enum
 from typing import Tuple
 
 import numpy as np
 import torch
-
 from sgai.agent.trainer import Trainer
-from sgai.example.snake import Direction, GamePoint, SnakeGame
+
+from snake import Direction, GamePoint, SnakeGame
+
+
 
 
 class MyTrainer(Trainer):
     def __init__(self, game, input_size: int, output_size: int):
         super().__init__(game, input_size, output_size)
-        self.game = game
 
     def get_state(self) -> np.ndarray:
         head = self.game.snake[0]

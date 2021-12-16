@@ -8,13 +8,19 @@ from typing import Tuple
 import numpy as np
 import pygame
 
-from sgai.example.config import GameColors
-
 BLOCK_SIZE = 20
 SPEED = 100
 
 pygame.init()
-font = pygame.font.Font("sgai/example/fonts/arial.ttf", 25)
+font = pygame.font.Font("fonts/arial.ttf", 25)
+
+# Colors
+class GameColors(Enum):
+    WHITE: Tuple = (255, 255, 255)
+    RED: Tuple = (150, 0, 0)
+    DARK_GREEN: Tuple = (0, 60, 10)
+    LIGHT_GREEN: Tuple = (50, 160, 80)
+    BLACK: Tuple = (0, 0, 0)
 
 
 class Direction(Enum):
@@ -23,11 +29,6 @@ class Direction(Enum):
     UP = 3
     DOWN = 4
 
-
-# class OutputLayerDirection(Enum):
-#     STRAIGHT = np.array([1, 0, 0])
-#     RIGHT_TURN = np.array([0, 1, 0])
-#     LEFT_TURN = np.array([0, 0, 1])
 
 
 class GamePoint:
@@ -206,3 +207,4 @@ class SnakeGame:
             y -= BLOCK_SIZE
 
         self.head = GamePoint(x=x, y=y)
+
